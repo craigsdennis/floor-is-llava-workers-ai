@@ -56,8 +56,10 @@
 				method: 'POST',
 				body: formData
 			});
-
-			const result = await response.json();
+			type Result = {
+				description: string;
+			}
+			const result: Result = await response.json();
 			description = result.description; // Store the description from the response
 		} catch (error) {
 			console.error('Error submitting form:', error);
