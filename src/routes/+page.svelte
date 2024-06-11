@@ -111,7 +111,7 @@
 </script>
 
 <div class="container">
-	<h1>Floor is LLava</h1>
+	<h1>Floor is Llava</h1>
 	<div
 		class="upload-area {isDragging ? 'dragging' : ''}"
 		role="button"
@@ -170,6 +170,10 @@
 		flex-direction: column;
 		align-items: center;
 		margin-top: 60px;
+	}
+
+	h1 {
+		color: #0070f3;
 	}
 
 	.upload-area {
