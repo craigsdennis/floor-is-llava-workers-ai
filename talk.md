@@ -1,0 +1,26 @@
+# Floor is LLava
+
+- [ ] Vision is here
+- [ ] That's a strange ability
+  - [ ] Have you used it?
+  - [ ] You should!
+- [ ] Use cases
+  - [ ] OCR - Optical Character Recognition
+    - [ ] It can read!
+  - [ ] Describe photos
+    - [ ] Think alt tags
+    - [ ] E-Commerce
+  - [ ] Keywords
+    - [ ] Post processing with R2
+  - [ ] Answer questions
+    - [ ] Think fashion
+    - [ ] Think cooking
+    - [ ] Frames of videos
+    - [ ] Think...everything?
+- [ ] Workers AI App running on Pages + Svelte
+- [ ] Demo
+- [ ] Code
+- [ ] Use it!
+- [ ] The floor is llava. 
+- [ ] Build stuff. Share it with the world, or at least with me!
+- [ ] What are you going to build?
