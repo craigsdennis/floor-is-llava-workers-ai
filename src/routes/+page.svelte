@@ -7,19 +7,59 @@
 	let description: string | null = null;
 	let isLoading: boolean = false;
 
-	const handleFileUpload = (event: Event) => {
+	const MAX_WIDTH = 800;
+	const MAX_HEIGHT = 800;
+
+	const resizeImage = (file: File): Promise<File> => {
+		return new Promise((resolve) => {
+			const img = new Image();
+			img.src = URL.createObjectURL(file);
+			img.onload = () => {
+				const canvas = document.createElement('canvas');
+				let width = img.width;
+				let height = img.height;
+
+				if (width > height) {
+					if (width > MAX_WIDTH) {
+						height = Math.round((height * MAX_WIDTH) / width);
+						width = MAX_WIDTH;
+					}
+				} else {
+					if (height > MAX_HEIGHT) {
+						width = Math.round((width * MAX_HEIGHT) / height);
+						height = MAX_HEIGHT;
+					}
+				}
+
+				canvas.width = width;
+				canvas.height = height;
+				const ctx = canvas.getContext('2d');
+				ctx.drawImage(img, 0, 0, width, height);
+
+				canvas.toBlob((blob) => {
+					if (blob) {
+						resolve(new File([blob], file.name, { type: file.type }));
+					}
+				}, file.type);
+			};
+		});
+	};
+
+	const handleFileUpload = async (event: Event) => {
 		const target = event.target as HTMLInputElement;
 		if (target.files && target.files.length > 0) {
 			image = target.files[0];
+			image = await resizeImage(image);
 			imageUrl = URL.createObjectURL(image);
 		}
 	};
 
-	const handleDrop = (event: DragEvent) => {
+	const handleDrop = async (event: DragEvent) => {
 		event.preventDefault();
 		isDragging = false;
 		if (event.dataTransfer && event.dataTransfer.files.length > 0) {
 			image = event.dataTransfer.files[0];
+			image = await resizeImage(image);
 			imageUrl = URL.createObjectURL(image);
 		}
 	};
@@ -58,7 +98,7 @@
 			});
 			type Result = {
 				description: string;
-			}
+			};
 			const result: Result = await response.json();
 			description = result.description; // Store the description from the response
 		} catch (error) {
@@ -71,6 +111,7 @@
 </script>
 
 <div class="container">
+	<h1>Floor is LLava</h1>
 	<div
 		class="upload-area {isDragging ? 'dragging' : ''}"
 		role="button"
@@ -115,8 +156,10 @@
 			>
 		</p>
 		<p>
-			Learn more about <a href="https://developers.cloudflare.com/workers-ai/privacy/" target="_blank"
-				>Cloudflare AI data and privacy</a>
+			Learn more about <a
+				href="https://developers.cloudflare.com/workers-ai/privacy/"
+				target="_blank">Cloudflare AI data and privacy</a
+			>
 		</p>
 	</div>
 </div>
