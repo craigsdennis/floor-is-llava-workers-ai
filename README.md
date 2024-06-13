@@ -14,9 +14,9 @@ This is a [SvelteKit](https://kit.svelte.dev/) app hosted on [Pages](https://pag
 
 Press the Use Template button on GitHub
 
-Create a new repository
+Create a new repository in your account.
 
-Head to https://dash.cloudflare.com > Pages > Create from your Repo
+Head to https://dash.cloudflare.com > Workers & Pages > Overview > Create > Pages > Connect to Git
 
 Choose SvelteKit (and leave the defaults)
 
