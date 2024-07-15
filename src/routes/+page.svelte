@@ -161,6 +161,13 @@
 				target="_blank">Cloudflare AI data and privacy</a
 			>
 		</p>
+		<p>
+			👀 the <a
+				href="https://github.com/craigsdennis/floor-is-llava-workers-ai"
+				target="_blank">Workers AI code</a
+			>
+		</p>
+
 	</div>
 </div>
 
